@@ -13,3 +13,6 @@ input_string = f.read()
 
 # split lines in order to more easily handle input
 input_string_split = input_string.splitlines()
+
+for line in input_string_split
+
