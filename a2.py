@@ -43,4 +43,12 @@ for line in input_string_split:
 		env_map[state][action] = {}
 		env_map[state][action][new_state] = float(p)
 
-
+# declare reward dictionary
+rwd_dict = {}
+rwd_dict["In"] = 1
+rwd_dict["Close"] = .8
+rwd_dict["Same"] = .6
+rwd_dict["Left"] = .5
+rwd_dict["Over"] = .3
+rwd_dict["Fairway"] = .25
+rwd_dict["Ravine"] = .1
