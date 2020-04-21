@@ -32,16 +32,25 @@ for line in input_string_split:
 		# check if action is in state
 		if action in env_map[state]:
 			# adding probability to action for state
-			evn_map[state][action][new_state] = int(p)
+			env_map[state][action][new_state] = int(p)
 		else:
-			# add action to state
-			evn_map[state][action] = {}
-			evn_map[state][action][new_state] = int(p)
+			# Add action to state
+			env_map[state][action] = {}
+			env_map[state][action][new_state] = int(p)
 	else:
 		# add state to map
-		evn_map[state] = {}
-		evn_map[state][action] = {}
-		evn_map[state][action][new_state] = int(p)
+		env_map[state] = {}
+		env_map[state][action] = {}
+		env_map[state][action][new_state] = int(p)
 
 
-			
+# testing input read
+print("--------------INPUT READ TEST--------------")
+for state in env_map:
+	print("State:" + state)
+	for action in env_map[state]:
+		print("    Action:")
+		for new_state in env_map[state][action]:
+			print("        Probability of reaching " + new_state + ": " + env_map[state][action][new_state])
+
+		
