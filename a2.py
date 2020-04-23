@@ -5,7 +5,7 @@
 import ModelFree
 
 # import Model-Based Learning module
-import ModelBased
+import Dyna_Q
 
 # Open and read input file
 f = open("input.txt", "r")
@@ -52,3 +52,24 @@ rwd_dict["Left"] = .5
 rwd_dict["Over"] = .3
 rwd_dict["Fairway"] = .25
 rwd_dict["Ravine"] = .1
+
+
+print("------------------ MODEL FREE LEARNING --------------------------")
+# use model free learning to generate policy
+mf_policy = ModelFree.model_free_learn(env_map, rwd_dict)
+print("------------------ P o l i c y ----------------------------------")
+for state in mf_policy:
+	print("If you're in state: " + state + ", you have the following options available:")
+	for action in mf_policy[state]:
+		print("    You could shoot it " + action + ", which has a utility of " + str(mf_policy[state][action]))
+	
+
+print("------------------ MODEL BASED LEARNING -------------------------")
+mb_policy = Dyna_Q.model_based_learn(env_map, rwd_dict)
+
+print("------------------ P o l i c y ----------------------------------")
+for state in mb_policy:
+	print("If you're in state: " + state + ", you have the following options available:")
+	for action in mb_policy[state]:
+		print("    You could shoot it " + action + ", which has a utility of " + str(mb_policy[state][action]))
+
